@@ -87,8 +87,25 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log(finances.length); 
-console.log(finances[0][1]);
+// Total amount of months included in the dataset
+monthsTotal = finances.length //the lenght of array will give the total number of months in array 
+console.log(monthsTotal) //console output
 
-let sumall = finances.map(item => item.amount).reduce((prev, curr) => prev + curr, 0);
-console.log(sumall);
+console.log(finances[0][1]); //isolating the profit/loss in first index of array
+
+// Net total amount of Profit/Losses over the entire period
+var netTotalAmount = 0;
+for (let i = 0; i < finances.length; i++) {
+    profitLossData = (finances[i][1]); //selects the Profit/Loss data only in array
+    //console.log(profitLossData); //confirming dataset in output
+    netTotalAmount = netTotalAmount + profitLossData; //sums profit/loss data in array
+}
+console.log(netTotalAmount); //console output
+
+//The average of the **changes** in Profit/Losses over the entire period.
+totalMonthlyChange = 0;
+for (let i = 0; i < finances.length - 1; i++) { //finances.length - 1 so when it gets to the end it doesn't crash
+totalMonthlyChange = totalMonthlyChange + ((finances [i+1][1]) - (finances[i][1]));
+}
+Average = totalMonthlyChange/86;
+console.log(Average);
