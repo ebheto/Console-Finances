@@ -107,5 +107,42 @@ totalMonthlyChange = 0;
 for (let i = 0; i < finances.length - 1; i++) { //finances.length - 1 so when it gets to the end it doesn't crash
 totalMonthlyChange = totalMonthlyChange + ((finances [i+1][1]) - (finances[i][1]));
 }
-Average = totalMonthlyChange/86;
+Average = totalMonthlyChange/(finances.length-1);
 console.log(Average);
+
+//The greatest increase in profits (date and amount) over the entire period.
+greatestIncreaseInProfits = 0;  
+indexOfGreatestProfit = 0; 
+for (let i = 0; i < finances.length - 1; i++) { 
+    currentGreatestIncreaseInProfits = ((finances [i+1][1]) - (finances[i][1])); 
+    if (currentGreatestIncreaseInProfits > greatestIncreaseInProfits) { 
+        greatestIncreaseInProfits = currentGreatestIncreaseInProfits;
+        indexOfGreatestProfit = i+1;
+    }
+
+};
+console.log(finances[indexOfGreatestProfit][0]);
+console.log(greatestIncreaseInProfits);
+
+//The greatest decrease in losess (date and amount) over the entire period
+
+greatestDecreaseInProfits = 0;
+indexOfGreatestProfit = 0;
+for (let i = 0; i < finances.length - 1; i++) {
+    currentGreatestDecreaseInProfits = ((finances [i+1][1]) - (finances[i][1])); 
+    if (currentGreatestDecreaseInProfits <  greatestDecreaseInProfits) { 
+        greatestDecreaseInProfits = currentGreatestDecreaseInProfits;
+        indexOfGreatestProfit = i+1;
+    }
+
+};
+console.log(finances[indexOfGreatestProfit][0]);
+console.log(greatestDecreaseInProfits);
+
+alert(`Financial Analysis
+Total Month: ${monthsTotal}
+Net Total Amount: ${netTotalAmount}
+Average: ${Average}
+Greatest Increase in Profit: ${finances[indexOfGreatestProfit][0], greatestIncreaseInProfits}
+Greatest Decrease in Profit: ${finances[indexOfGreatestProfit][0], greatestDecreaseInProfits}`
+);
